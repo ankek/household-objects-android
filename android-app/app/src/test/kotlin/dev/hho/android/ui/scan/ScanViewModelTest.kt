@@ -1,5 +1,6 @@
 package dev.hho.android.ui.scan
 
+import androidx.lifecycle.viewModelScope
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.hho.android.data.items.ItemSearch
 import dev.hho.android.data.room.HhoDatabase
@@ -17,6 +18,7 @@ import dev.hho.android.ui.items.ViewModelTracker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.job
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
@@ -40,7 +42,11 @@ class ScanViewModelTest {
     private val viewModels = ViewModelTracker()
 
     private fun awaitSheet(): ScanUiState.Sheet = kotlinx.coroutines.runBlocking {
-        kotlinx.coroutines.withTimeout(10_000) { vm.uiState.first { it is ScanUiState.Sheet } as ScanUiState.Sheet }
+        kotlinx.coroutines.withTimeout(10_000) {
+            val sheet = vm.uiState.first { it is ScanUiState.Sheet } as ScanUiState.Sheet
+            vm.viewModelScope.coroutineContext.job.children.forEach { it.join() }
+            sheet
+        }
     }
 
     private fun code(v: String) = listOf(DecodedBarcode(v, BarcodeFormat.QR_CODE))

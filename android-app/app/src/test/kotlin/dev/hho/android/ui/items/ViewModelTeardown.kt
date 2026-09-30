@@ -2,7 +2,9 @@ package dev.hho.android.ui.items
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.job
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import org.robolectric.shadows.ShadowLooper
 
 internal class ViewModelTracker {
@@ -11,7 +13,9 @@ internal class ViewModelTracker {
     fun <T : ViewModel> track(viewModel: T): T = viewModel.also { tracked += it }
 
     fun cancelAll() {
-        tracked.forEach { it.viewModelScope.cancel() }
+        val jobs = tracked.map { it.viewModelScope.coroutineContext.job }
+        jobs.forEach { it.cancel() }
+        runBlocking { withTimeout(10_000) { jobs.forEach { it.join() } } }
         tracked.clear()
         ShadowLooper.idleMainLooper()
     }

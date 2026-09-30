@@ -77,11 +77,12 @@ jobs:
         run: rm -f "$RUNNER_TEMP/release.jks"
 
       - name: Publish GitHub release
-        uses: softprops/action-gh-release@v2
-        with:
-          name: ${{ steps.version.outputs.name }}
-          generate_release_notes: true
-          fail_on_unmatched_files: true
-          files: |
-            android-app/dist/*.apk
-            android-app/dist/SHA256SUMS
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.name }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$VERSION" \
+            --generate-notes \
+            --verify-tag \
+            dist/*.apk dist/SHA256SUMS
