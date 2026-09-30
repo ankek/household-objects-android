@@ -215,7 +215,7 @@ class ReceivingViewModelTest {
         vm.dismissUnexpected()
         await { sessionState()!!.pendingUnexpected == null }
         assertTrue(sessionState()!!.lines.isEmpty())
-        assertFalse(vm.paused)
+        await("analysis resumes") { !vm.paused }
     }
 
     @Test fun noMatchShowsMessageAndWritesNothing() {
@@ -246,6 +246,7 @@ class ReceivingViewModelTest {
         vm.setScanning(true)
         scan("111")
         await { line("drill")?.discrepancy?.receivedQty == 1 }
+        await("first resolve finishes") { !vm.paused }
         clock += 1_000
         vm.onBarcodes(code("111"))
         assertFalse("a repeat in the suppression window starts no resolve", vm.paused)
