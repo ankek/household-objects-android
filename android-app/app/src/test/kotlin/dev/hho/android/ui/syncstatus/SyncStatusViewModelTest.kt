@@ -1,5 +1,6 @@
 package dev.hho.android.ui.syncstatus
 
+import androidx.lifecycle.viewModelScope
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.hho.android.data.room.HhoDatabase
 import dev.hho.android.data.room.ItemEntity
@@ -16,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.job
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -65,7 +67,9 @@ class SyncStatusViewModelTest {
     }
 
     @After fun tearDown() {
+        val job = vm.viewModelScope.coroutineContext.job
         viewModels.cancelAll()
+        runBlocking { withTimeout(10_000) { job.join() } }
         db.close()
         Dispatchers.resetMain()
     }
