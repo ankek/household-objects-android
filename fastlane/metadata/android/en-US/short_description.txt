@@ -1,0 +1,1 @@
+Offline-first home inventory client for a self-hosted HHO server

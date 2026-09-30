@@ -1,0 +1,491 @@
+{
+  "device_id": "stocktake-seed-device",
+  "mutations": [
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000001",
+      "entity_type": "location",
+      "entity_id": "00000000-0000-7000-8000-000200000001",
+      "base_version": 0,
+      "fields": {
+        "name": "Location 1"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000002",
+      "entity_type": "location",
+      "entity_id": "00000000-0000-7000-8000-000200000002",
+      "base_version": 0,
+      "fields": {
+        "name": "Location 2"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000003",
+      "entity_type": "location",
+      "entity_id": "00000000-0000-7000-8000-000200000003",
+      "base_version": 0,
+      "fields": {
+        "name": "Location 3"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000004",
+      "entity_type": "location",
+      "entity_id": "00000000-0000-7000-8000-000200000004",
+      "base_version": 0,
+      "fields": {
+        "name": "Location 4"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000005",
+      "entity_type": "label",
+      "entity_id": "00000000-0000-7000-8000-000300000001",
+      "base_version": 0,
+      "fields": {
+        "name": "Label 1",
+        "color": "#000001"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000006",
+      "entity_type": "label",
+      "entity_id": "00000000-0000-7000-8000-000300000002",
+      "base_version": 0,
+      "fields": {
+        "name": "Label 2",
+        "color": "#000002"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000007",
+      "entity_type": "label",
+      "entity_id": "00000000-0000-7000-8000-000300000003",
+      "base_version": 0,
+      "fields": {
+        "name": "Label 3",
+        "color": "#000003"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000008",
+      "entity_type": "label",
+      "entity_id": "00000000-0000-7000-8000-000300000004",
+      "base_version": 0,
+      "fields": {
+        "name": "Label 4",
+        "color": "#000004"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000009",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000001",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 01",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000010",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000002",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 02",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000011",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000003",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 03",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000012",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000004",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 04",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000013",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000005",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 05",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000014",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000006",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 06",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000015",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000007",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 07",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000016",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000008",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 08",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000017",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000009",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 09",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000018",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000010",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 10",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000019",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000011",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 11",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000020",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000012",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 12",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000021",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000013",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 13",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000022",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000014",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 14",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000023",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000015",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 15",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000024",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000016",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 16",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000025",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000017",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 17",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000026",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000018",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 18",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000027",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000019",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 19",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000028",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000020",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 20",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000029",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000021",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 21",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000030",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000022",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 22",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000031",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000023",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 23",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000032",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000024",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 24",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000033",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000025",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 25",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000034",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000026",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 26",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000035",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000027",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 27",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000036",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000028",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 28",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000037",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000029",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 29",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000038",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000030",
+      "base_version": 0,
+      "fields": {
+        "name": "Item 30",
+        "description": "seed",
+        "location_id": "00000000-0000-7000-8000-000200000001",
+        "quantity": 10
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000039",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000001",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000028",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000040",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000002",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000028",
+        "label_id": "00000000-0000-7000-8000-000300000002"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000041",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000003",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000029",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000042",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000004",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000029",
+        "label_id": "00000000-0000-7000-8000-000300000002"
+      }
+    },
+    {
+      "mutation_id": "00000000-0000-7000-8000-000500000043",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000005",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000030",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      }
+    }
+  ]
+}
