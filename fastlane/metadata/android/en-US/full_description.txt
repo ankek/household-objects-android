@@ -1,0 +1,9 @@
+HHO (Household Objects) is a client for the self-hosted HHO home inventory server.
+
+Keep track of what your household owns: what is in the garage, which box holds the holiday lights, whether the drill is still under warranty.
+
+* Works offline and syncs with your own HHO server when a connection is available
+* Scan barcodes and QR codes with the camera to find and update items quickly
+* No cloud account and no subscription: your data stays on your hardware
+
+This app needs an HHO server that you run yourself.

@@ -1,0 +1,560 @@
+{
+  "device_id": "stocktake-device-1",
+  "mutations": [
+    {
+      "mutation_id": "019e7044-8801-70b6-9c9f-108f9d9a3fbd",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70b6-ab3c-f3701fd0089c",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000001",
+        "delta": 4,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70b7-b5b6-895ff26d9de7",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000006",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 06 (counted)",
+        "description": "recounted 06"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70b8-b85d-371ce2496990",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000018",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000002"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70b9-9ab3-4b452cb0e5d2",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70b7-9cf4-23daa86aa6fa",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000028",
+        "label_id": "00000000-0000-7000-8000-000300000003"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70ba-b3bc-b0fc49e49440",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000001",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000028",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      },
+      "op": "delete"
+    },
+    {
+      "mutation_id": "019e7044-8801-70bb-874c-70182c05c5cf",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70b8-a6d7-91403b13ed19",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000002",
+        "delta": -3,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70bc-867a-c65976722ae7",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000007",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 07 (counted)",
+        "description": "recounted 07"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70bd-bcfd-bb17e56ea549",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000019",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000003"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70be-b00e-7ef3414642a9",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70b9-bad9-6dd449034499",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000028",
+        "label_id": "00000000-0000-7000-8000-000300000004"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70bf-b2e6-583b67052530",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000002",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000028",
+        "label_id": "00000000-0000-7000-8000-000300000002"
+      },
+      "op": "delete"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c0-afc3-fe33add2c73d",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70ba-bd5d-d3eb4eaddd16",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000003",
+        "delta": 7,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c1-821a-686312998a20",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000008",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 08 (counted)",
+        "description": "recounted 08"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c2-8529-0c814caf6bab",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000020",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000004"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c3-9f04-9ccea4dc24c2",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70bb-ba77-c76ce8529295",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000029",
+        "label_id": "00000000-0000-7000-8000-000300000003"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c4-a4a8-61d33f296356",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000003",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000029",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      },
+      "op": "delete"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c5-8581-95d37a0a5c72",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70bc-aa39-5ceb53e77f77",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000004",
+        "delta": -2,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c6-b3f6-85867227273d",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000009",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 09 (counted)",
+        "description": "recounted 09"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c7-81c5-f8cb648f4022",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000021",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000002"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c8-b8cc-576f912ccb7d",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70bd-b3b6-99bc19aa6d42",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000029",
+        "label_id": "00000000-0000-7000-8000-000300000004"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70c9-9bbb-714d66a1c17d",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000004",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000029",
+        "label_id": "00000000-0000-7000-8000-000300000002"
+      },
+      "op": "delete"
+    },
+    {
+      "mutation_id": "019e7044-8801-70ca-8798-9634d411a91a",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70be-99f0-92d03e12fccd",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000005",
+        "delta": 5,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70cb-9c90-119ca3e8fe4e",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000010",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 10 (counted)",
+        "description": "recounted 10"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70cc-a092-f6da5bc05ffe",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000022",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000003"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70cd-a1f6-c6657dd13c23",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70bf-a1d5-2c17c4e2a585",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000030",
+        "label_id": "00000000-0000-7000-8000-000300000003"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70ce-8d30-a196d0667540",
+      "entity_type": "item_label",
+      "entity_id": "00000000-0000-7000-8000-000400000005",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000030",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      },
+      "op": "delete"
+    },
+    {
+      "mutation_id": "019e7044-8801-70cf-9f4e-d1a57ac27a2d",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c0-bd5a-b0ad55b964ec",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000001",
+        "delta": -1,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d0-8fa3-27f05e0911aa",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000011",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 11 (counted)",
+        "description": "recounted 11"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d1-a5d3-80e7f013bd6a",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000023",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000004"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d2-bf08-4805c7c8a475",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70c1-a1de-dc2383d87283",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000030",
+        "label_id": "00000000-0000-7000-8000-000300000004"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d3-a154-92b766a47b05",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c2-82fa-e7b1bfd159ba",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000002",
+        "delta": 3,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d4-be82-1129de756e56",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000012",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 12 (counted)",
+        "description": "recounted 12"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d5-aa0a-ff51fcb7c4fc",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000024",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000002"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d6-b0d4-3db240b338bd",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70c3-b5dc-520b5a06ca9b",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000001",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d7-9525-189d23431d03",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c4-bbb9-7719aa351349",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000003",
+        "delta": -4,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d8-869c-d6107a0abd5b",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000013",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 13 (counted)",
+        "description": "recounted 13"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70d9-b7e0-3557ab9d11a8",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000025",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000003"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70da-880b-711eaf2b81e5",
+      "entity_type": "item_label",
+      "entity_id": "019e7044-8800-70c5-952d-350c2496d795",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000002",
+        "label_id": "00000000-0000-7000-8000-000300000001"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70db-bbb5-5b933a9609b7",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c6-923b-de470a6c1128",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000004",
+        "delta": 6,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70dc-955b-a5c060892c18",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000014",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 14 (counted)",
+        "description": "recounted 14"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70dd-8081-9e5f91c7e1df",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000026",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000004"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70de-b08c-81a505ab91fc",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c7-af2a-24384b86fa1b",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000005",
+        "delta": 2,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70df-a2ea-22c94d8f4095",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000015",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 15 (counted)",
+        "description": "recounted 15"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e0-b018-196c7b390a6b",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000027",
+      "base_version": 1,
+      "fields": {
+        "location_id": "00000000-0000-7000-8000-000200000002"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e1-8cc7-00046febc437",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c8-8c8b-8d29a84e0cf6",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000001",
+        "delta": -5,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e2-8b0b-85ef5836c1d4",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000016",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 16 (counted)",
+        "description": "recounted 16"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e3-aa5f-6ee574b26f75",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70c9-90e6-f779837a1067",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000002",
+        "delta": 8,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e4-a410-e2da2473173c",
+      "entity_type": "item",
+      "entity_id": "00000000-0000-7000-8000-000100000017",
+      "base_version": 1,
+      "fields": {
+        "name": "Item 17 (counted)",
+        "description": "recounted 17"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e5-9cf4-fc937c4ff7ec",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70ca-90cc-b6e7c84a0237",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000003",
+        "delta": 1,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e6-8802-227d46ca4585",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70cb-85e9-8cd86aa7f43d",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000004",
+        "delta": -6,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    },
+    {
+      "mutation_id": "019e7044-8801-70e7-a0c2-b47dfe0edb13",
+      "entity_type": "stock_adjustment",
+      "entity_id": "019e7044-8800-70cc-bdbd-2ab9ba755f6a",
+      "base_version": 0,
+      "fields": {
+        "item_id": "00000000-0000-7000-8000-000100000005",
+        "delta": 9,
+        "reason": "stocktake"
+      },
+      "op": "upsert"
+    }
+  ]
+}
