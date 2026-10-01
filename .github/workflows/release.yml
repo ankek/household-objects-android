@@ -2,15 +2,65 @@ name: Release
 
 on:
   push:
+    branches: [main]
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
+  check:
+    name: Check version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      publish: ${{ steps.version.outputs.publish }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Read app version
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(sed -n 's/.*ClientVersion\.validate("\([^"]*\)").*/\1/p' android-app/app/build.gradle.kts)
+          if [ -z "$version" ]; then
+            echo "::error::Could not read the app version from android-app/app/build.gradle.kts"
+            exit 1
+          fi
+          tag="v$version"
+
+          if [ "$GITHUB_REF_TYPE" = "tag" ] && [ "$GITHUB_REF_NAME" != "$tag" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match app version $version"
+            exit 1
+          fi
+
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $tag already exists, nothing to publish. Bump the version to make a new release."
+            publish=false
+          else
+            echo "Release $tag will be published."
+            publish=true
+          fi
+
+          {
+            echo "version=$version"
+            echo "tag=$tag"
+            echo "publish=$publish"
+          } >> "$GITHUB_OUTPUT"
+
   release:
     name: Build and publish release
+    needs: check
+    if: needs.check.outputs.publish == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     defaults:
@@ -19,17 +69,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-
-      - name: Check tag matches app version
-        id: version
-        run: |
-          tag="${GITHUB_REF_NAME#v}"
-          app_version=$(sed -n 's/.*ClientVersion\.validate("\([^"]*\)").*/\1/p' app/build.gradle.kts)
-          if [ "$tag" != "$app_version" ]; then
-            echo "::error::Tag $GITHUB_REF_NAME does not match versionName $app_version in app/build.gradle.kts"
-            exit 1
-          fi
-          echo "name=$app_version" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-java@v5
         with:
@@ -63,14 +102,14 @@ jobs:
 
       - name: Collect artifacts
         env:
-          VERSION: ${{ steps.version.outputs.name }}
+          VERSION: ${{ needs.check.outputs.version }}
         run: |
           mkdir -p dist
           for flavor in foss gms; do
             cp "app/build/outputs/apk/$flavor/release/app-$flavor-release.apk" "dist/hho-$VERSION-$flavor.apk"
           done
           cd dist
-          sha256sum *.apk > SHA256SUMS
+          sha256sum -- *.apk > SHA256SUMS
 
       - name: Remove keystore
         if: always()
@@ -79,10 +118,11 @@ jobs:
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ steps.version.outputs.name }}
+          TAG: ${{ needs.check.outputs.tag }}
+          VERSION: ${{ needs.check.outputs.version }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
             --title "$VERSION" \
             --generate-notes \
-            --verify-tag \
             dist/*.apk dist/SHA256SUMS
