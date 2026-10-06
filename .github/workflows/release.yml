@@ -79,16 +79,39 @@ jobs:
         with:
           cache-read-only: true
 
-      - name: Restore signing keystore
+      - name: Restore and verify signing keystore
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          if [ -z "$KEYSTORE_BASE64" ]; then
-            echo "::error::KEYSTORE_BASE64 secret is not set"
+          missing=0
+          for name in KEYSTORE_BASE64 KEYSTORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+            if [ -z "${!name}" ]; then
+              echo "::error::Repository secret $name is not set (Settings > Secrets and variables > Actions)"
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+
+          keystore="$RUNNER_TEMP/release.jks"
+          if ! printf '%s' "$KEYSTORE_BASE64" | tr -d '[:space:]' | base64 --decode > "$keystore"; then
+            echo "::error::KEYSTORE_BASE64 is not valid base64. Create it with: base64 -w0 release.jks"
             exit 1
           fi
-          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
-          echo "HHO_KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+          if ! keytool -list -keystore "$keystore" -storepass "$KEYSTORE_PASSWORD" >/dev/null 2>&1; then
+            echo "::error::Cannot open the keystore with KEYSTORE_PASSWORD. Either the password is wrong or KEYSTORE_BASE64 does not contain the right keystore."
+            exit 1
+          fi
+          if ! keytool -list -keystore "$keystore" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" >/dev/null 2>&1; then
+            echo "::error::Alias from KEY_ALIAS not found in the keystore. Available aliases:"
+            keytool -list -keystore "$keystore" -storepass "$KEYSTORE_PASSWORD" | grep -i 'entry' || true
+            exit 1
+          fi
+
+          echo "HHO_KEYSTORE_FILE=$keystore" >> "$GITHUB_ENV"
 
       - name: Unit tests
         run: ./gradlew testFossDebugUnitTest testGmsDebugUnitTest
