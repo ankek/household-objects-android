@@ -12,4 +12,16 @@ object ClientVersion {
         }
         return raw
     }
+
+    /**
+     * Derives the Android versionCode from MAJOR.MINOR.PATCH as MAJOR * 10000 + MINOR * 100 + PATCH,
+     * so every version bump also produces a higher versionCode (1.4.2 -> 10402).
+     */
+    fun versionCode(version: String): Int {
+        val (major, minor, patch) = validate(version).split('.').map(String::toInt)
+        require(minor < 100 && patch < 100) {
+            "hhoClientVersion \"$version\" cannot be mapped to a versionCode: MINOR and PATCH must be below 100."
+        }
+        return major * 10_000 + minor * 100 + patch
+    }
 }

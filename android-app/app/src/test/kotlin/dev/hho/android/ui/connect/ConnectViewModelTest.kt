@@ -4,6 +4,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import dev.hho.android.data.apiclient.HhoApiClient
 import dev.hho.android.data.network.ClientVersionInterceptor
 import dev.hho.android.data.network.InstanceUrlNormalization
@@ -33,6 +37,11 @@ class ConnectViewModelTest {
 
     private val server = MockWebServer()
 
+    // ConnectViewModel's init launches a DataStore read that resumes on Dispatchers.Main.
+    // Clearing the store cancels viewModelScope before resetMain(), so that read can never
+    // resume after the test has ended and crash whichever test runs next.
+    private val viewModelStore = ViewModelStore()
+
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
@@ -40,6 +49,7 @@ class ConnectViewModelTest {
 
     @After
     fun tearDown() {
+        viewModelStore.clear()
         Dispatchers.resetMain()
         server.shutdown()
     }
@@ -49,6 +59,15 @@ class ConnectViewModelTest {
         file.deleteOnExit()
         return PreferenceDataStoreFactory.create(produceFile = { file })
     }
+
+    private fun connectViewModel(
+        dataStore: DataStore<Preferences>,
+        apiClient: HhoApiClient,
+    ): ConnectViewModel =
+        ViewModelProvider.create(
+            viewModelStore,
+            viewModelFactory { initializer { ConnectViewModel(dataStore, apiClient) } },
+        )[ConnectViewModel::class]
 
     private fun apiClient(): HhoApiClient =
         HhoApiClient(OkHttpClient(), OkHttpClient.Builder().addInterceptor(ClientVersionInterceptor()).build())
@@ -63,7 +82,7 @@ class ConnectViewModelTest {
         runTest {
             server.enqueue(MockResponse().setResponseCode(200).setBody(statusOkBody))
             val dataStore = tempDataStore()
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
             val candidate = server.url("/").toString()
 
             val expected = (InstanceUrlNormalizer.normalize(candidate) as InstanceUrlNormalization.Valid).url.toString()
@@ -81,7 +100,7 @@ class ConnectViewModelTest {
         runTest {
             server.enqueue(MockResponse().setResponseCode(200).setBody(statusOkBody))
             val dataStore = tempDataStore()
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
             val candidate = server.url("/hho").toString()
             val expected = (InstanceUrlNormalizer.normalize(candidate) as InstanceUrlNormalization.Valid).url.toString()
 
@@ -98,7 +117,7 @@ class ConnectViewModelTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://already-configured.example.com" }
             val before = storedUrl(dataStore)
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
             val candidate = server.url("/").toString()
             server.shutdown()
 
@@ -119,7 +138,7 @@ class ConnectViewModelTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://already-configured.example.com" }
             val before = storedUrl(dataStore)
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
 
             viewModel.connect(server.url("/").toString())
 
@@ -134,7 +153,7 @@ class ConnectViewModelTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://already-configured.example.com" }
             val before = storedUrl(dataStore)
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
 
             viewModel.connect(server.url("/").toString())
 
@@ -154,7 +173,7 @@ class ConnectViewModelTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://already-configured.example.com" }
             val before = storedUrl(dataStore)
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
 
             viewModel.connect(server.url("/").toString())
 
@@ -169,7 +188,7 @@ class ConnectViewModelTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://already-configured.example.com" }
             val before = storedUrl(dataStore)
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
 
             viewModel.connect(server.url("/").toString())
 
@@ -183,7 +202,7 @@ class ConnectViewModelTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://already-configured.example.com" }
             val before = storedUrl(dataStore)
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
 
             viewModel.connect("not-a-url-at-all")
 
@@ -197,7 +216,7 @@ class ConnectViewModelTest {
         runTest {
             val dataStore = tempDataStore()
             dataStore.edit { it[SettingsKeys.INSTANCE_BASE_URL] = "https://stored.example.com" }
-            val viewModel = ConnectViewModel(dataStore, apiClient())
+            val viewModel = connectViewModel(dataStore, apiClient())
 
             viewModel.prefillStoredUrl()
 
@@ -207,7 +226,7 @@ class ConnectViewModelTest {
     @Test
     fun `the url field stays blank when nothing is stored yet`() =
         runTest {
-            val viewModel = ConnectViewModel(tempDataStore(), apiClient())
+            val viewModel = connectViewModel(tempDataStore(), apiClient())
 
             viewModel.prefillStoredUrl()
 

@@ -11,7 +11,10 @@ plugins {
     alias(libs.plugins.openapi.generator)
 }
 
-val hhoClientVersion = ClientVersion.validate("0.1.3")
+// The app version lives in VERSION at the repository root; edit only that file to release.
+val hhoClientVersion = ClientVersion.validate(
+    providers.fileContents(rootProject.layout.projectDirectory.file("../VERSION")).asText.get().trim(),
+)
 
 val releaseKeystore = providers.environmentVariable("HHO_KEYSTORE_FILE")
     .orElse(providers.gradleProperty("hho.keystore.file"))
@@ -27,7 +30,7 @@ android {
         applicationId = "dev.hho.android"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 1
+        versionCode = ClientVersion.versionCode(hhoClientVersion)
         versionName = hhoClientVersion
 
         buildConfigField("String", "HHO_CLIENT_VERSION", "\"$hhoClientVersion\"")
