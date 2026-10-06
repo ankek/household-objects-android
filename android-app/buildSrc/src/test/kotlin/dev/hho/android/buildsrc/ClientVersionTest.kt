@@ -77,4 +77,22 @@ class ClientVersionTest {
         assertEquals(true, error.message?.contains("0.1.0-debug"))
         assertEquals(true, error.message?.contains("MAJOR.MINOR.PATCH"))
     }
+
+    @Test
+    fun `versionCode packs MAJOR MINOR PATCH into an increasing integer`() {
+        assertEquals(103, ClientVersion.versionCode("0.1.3"))
+        assertEquals(10402, ClientVersion.versionCode("1.4.2"))
+        assertEquals(true, ClientVersion.versionCode("0.2.0") > ClientVersion.versionCode("0.1.99"))
+    }
+
+    @Test
+    fun `versionCode rejects MINOR or PATCH of 100 or more`() {
+        assertThrows(IllegalArgumentException::class.java) { ClientVersion.versionCode("1.100.0") }
+        assertThrows(IllegalArgumentException::class.java) { ClientVersion.versionCode("1.0.100") }
+    }
+
+    @Test
+    fun `versionCode rejects an invalid version`() {
+        assertThrows(IllegalArgumentException::class.java) { ClientVersion.versionCode("1.2.3-rc1") }
+    }
 }
