@@ -11,7 +11,7 @@ plugins {
     alias(libs.plugins.openapi.generator)
 }
 
-val hhoClientVersion = ClientVersion.validate("0.1.2")
+val hhoClientVersion = ClientVersion.validate("0.1.3")
 
 val releaseKeystore = providers.environmentVariable("HHO_KEYSTORE_FILE")
     .orElse(providers.gradleProperty("hho.keystore.file"))
